@@ -3,7 +3,55 @@
 ## This project looks something like this:
 https://user-images.githubusercontent.com/19974650/133604625-b5b9c70e-285b-4f82-a801-8b657f442694.mp4
 
+# Project Structure used in this project
 
+* project-name
+  * assests
+    * fonts
+      * roboto_light.ttf      
+    * images
+      *  ic_splash.png //1.0x [mdpi]
+      *  facebook.svg
+      *  1.5x
+          * ic_splash.png [hdpi]
+      *  2.0x
+          * ic_splash.png [xhdpi]
+      *  3.0x
+          * ic_splash.png [xxhdpi]
+      *  4.0x
+          * ic_splash.png [xxxhdpi]
+   * lib
+      * main.dart
+      * base
+        * base_class.dart
+      * screens
+        * login
+          * login_screen.dart
+          * bloc
+            * login_bloc.dart
+            * login_event.dart
+            * login_state.dart
+          * login.dart
+        * home
+          * home_screen.dart
+          * bloc
+            * home_bloc.dart
+            * home_event.dart
+            * home_state.dart
+          * home.dart
+    * values
+      * colors.dart
+      * strings.dart
+      * images.dart
+      * dimen.dart
+    * utils
+      * app_constant.dart
+      * api_constant.dart
+    * widget
+      * app_button.dart
+      * app_textview.dart
+      
+    
 
 # Naming convention:
 
@@ -113,53 +161,3 @@ void sum(int testValue) { // …}
 
 
     
-# Project Structure
-
-* project-name
-  * assests
-    * fonts
-      * roboto_light.ttf      
-    * images
-      *  ic_splash.png //1.0x [mdpi]
-      *  facebook.svg
-      *  1.5x
-          * ic_splash.png [hdpi]
-      *  2.0x
-          * ic_splash.png [xhdpi]
-      *  3.0x
-          * ic_splash.png [xxhdpi]
-      *  4.0x
-          * ic_splash.png [xxxhdpi]
-   * lib
-      * main.dart
-      * base
-        * base_class.dart
-      * screens
-        * login
-          * login_screen.dart
-          * bloc
-            * login_bloc.dart
-            * login_event.dart
-            * login_state.dart
-          * login.dart
-        * home
-          * home_screen.dart
-          * bloc
-            * home_bloc.dart
-            * home_event.dart
-            * home_state.dart
-          * home.dart
-    * values
-      * colors.dart
-      * strings.dart
-      * images.dart
-      * dimen.dart
-    * utils
-      * app_constant.dart
-      * api_constant.dart
-    * widget
-      * app_button.dart
-      * app_textview.dart
-      
-    
-
