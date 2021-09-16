@@ -28,9 +28,9 @@ class _LoginFormState extends State<LoginForm> {
   LoginBloc get _loginBloc => widget.loginBloc;
 
   TextEditingController _phoneNumberController = new TextEditingController(
-      text: "8128101095");
+      text: "987654321");
   TextEditingController _passwordController = new TextEditingController(
-      text: "Himangi#1410");
+      text: "123456");
   FocusNode _phoneFocusNode = new FocusNode();
   FocusNode _passFocusNode = new FocusNode();
 
