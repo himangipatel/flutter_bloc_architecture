@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_architecture/base/base_bloc.dart';
 import 'package:flutter_bloc_architecture/model/model.dart';
 import 'package:flutter_bloc_architecture/screen/list/social_list.dart';
 
 class SocialMediaListBloc
-    extends Bloc<SocialMediaListEvent, SocialMediaListState> {
+    extends BaseBloc<SocialMediaListEvent, SocialMediaListState> {
   // final SocialMediaBloc mainBloc;
 
   SocialMediaListBloc(/*this.mainBloc*/)

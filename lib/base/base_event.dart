@@ -1,0 +1,4 @@
+enum BaseEvent{
+  LOADING,
+  LOADED
+}

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_architecture/main_bloc/app_loader_bloc.dart';
+import 'package:flutter_bloc_architecture/main_bloc/app_loader_event.dart';
 import 'package:flutter_bloc_architecture/main_bloc/main_block.dart';
 import 'package:flutter_bloc_architecture/screen/list/social_list.dart';
 import 'package:flutter_bloc_architecture/screen/start/social_media_screen.dart';
@@ -18,7 +20,6 @@ class _StartScreenState extends State<StartScreen> {
     final AuthenticationBloc authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     final SocialMediaListBloc mediaListBloc =
     BlocProvider.of<SocialMediaListBloc>(context);
-
     return Scaffold(
       appBar: AppBar(title:
       BlocProvider<SocialMediaListBloc>(
@@ -47,6 +48,7 @@ class _StartScreenState extends State<StartScreen> {
                     child: Text('logout'),
                     onPressed: () {
                       authenticationBloc.add(LoggedOut());
+                      mediaListBloc.setLoading(true);
                     },
                   )),
             ),

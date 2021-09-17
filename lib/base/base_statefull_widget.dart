@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_architecture/base/base_bloc.dart';
+import 'package:flutter_bloc_architecture/base/children_holder.dart';
+import 'package:flutter_bloc_architecture/main_bloc/app_loader_bloc.dart';
+import 'package:flutter_bloc_architecture/main_bloc/app_loader_state.dart';
 import 'package:flutter_bloc_architecture/widget/progress_bar_widget.dart';
 import 'package:flutter_bloc_architecture/utils/size_config.dart';
 import 'package:provider/provider.dart';
 
-import 'base_bloc.dart';
-
-
 abstract class BaseStateFullWidget<M extends BaseBloc, T extends StatefulWidget>
     extends State<T> {
-
   late M bloc;
   late SizeConfig sizeConfig;
 
   @override
   void initState() {
     super.initState();
-    print('initState');
     bloc = initBloc();
-    sizeConfig =  new SizeConfig();
+    sizeConfig = new SizeConfig();
   }
 
   @override
@@ -26,6 +25,7 @@ abstract class BaseStateFullWidget<M extends BaseBloc, T extends StatefulWidget>
     super.didChangeDependencies();
     sizeConfig.init(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<M>(
@@ -48,13 +48,4 @@ abstract class BaseStateFullWidget<M extends BaseBloc, T extends StatefulWidget>
   M initBloc();
 
   Widget stateWidgetBuilder(BuildContext context, Widget childrenHolder);
-}
-
-class ChildrenHolder extends Widget {
-  ChildrenHolder();
-
-  @override
-  Element createElement() {
-    return createElement();
-  }
 }

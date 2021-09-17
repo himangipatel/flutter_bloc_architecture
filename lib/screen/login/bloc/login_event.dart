@@ -17,7 +17,4 @@ class LoginButtonPressed extends LoginEvent {
   @override
   List<Object> get props => [username, password];
 
-  @override
-  String toString() =>
-      'LoginButtonPressed { username: $username, password: $password }';
 }

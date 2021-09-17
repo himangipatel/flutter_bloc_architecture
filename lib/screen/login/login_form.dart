@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_architecture/main_bloc/app_loader_bloc.dart';
+import 'package:flutter_bloc_architecture/main_bloc/app_loader_state.dart';
 import 'package:flutter_bloc_architecture/main_bloc/main_block.dart';
 import 'package:flutter_bloc_architecture/utils/validator.dart';
 import 'package:flutter_bloc_architecture/values/values.dart';
 import 'package:flutter_bloc_architecture/widget/widget.dart';
 
-
 import 'login.dart';
-
 
 class LoginForm extends StatefulWidget {
   final LoginBloc loginBloc;
@@ -24,13 +24,12 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-
   LoginBloc get _loginBloc => widget.loginBloc;
 
-  TextEditingController _phoneNumberController = new TextEditingController(
-      text: "987654321");
-  TextEditingController _passwordController = new TextEditingController(
-      text: "123456");
+  TextEditingController _phoneNumberController =
+      new TextEditingController(text: "987654321");
+  TextEditingController _passwordController =
+      new TextEditingController(text: "123456");
   FocusNode _phoneFocusNode = new FocusNode();
   FocusNode _passFocusNode = new FocusNode();
 
@@ -63,7 +62,6 @@ class _LoginFormState extends State<LoginForm> {
         icon: Icons.lock_outline);
   }
 
-
   void _onWidgetDidBuild(Function callback) {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       callback();
@@ -71,7 +69,6 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   _onLoginButtonPressed() {
-
     _loginBloc.add(LoginButtonPressed(
       username: _phoneNumberController.text,
       password: _passwordController.text,
@@ -82,8 +79,10 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
       bloc: _loginBloc,
-      builder: (BuildContext context,
-          LoginState state,) {
+      builder: (
+        BuildContext context,
+        LoginState state,
+      ) {
         if (state is LoginFailure) {
           _onWidgetDidBuild(() {
             Scaffold.of(context).showSnackBar(
@@ -116,31 +115,22 @@ class _LoginFormState extends State<LoginForm> {
                   _passwordWidget(),
                   SizedBox(height: 20),
                   ElevatedButton(
-                      onPressed: state is! LoginLoading
-                          ? _onLoginButtonPressed
-                          : null,
+                      onPressed: _onLoginButtonPressed,
                       style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue)),
+                              MaterialStateProperty.all<Color>(Colors.blue)),
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
                         child: Text(
                           Strings.singIn,
                         ),
                       )),
-
                 ],
               ),
-            ),
-            Center(
-              child: state is LoginLoading
-                  ? LoadingIndicator()
-                  : null,
             ),
           ],
         );
       },
     );
   }
-
 }

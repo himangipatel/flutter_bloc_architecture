@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_architecture/main_bloc/app_loader_bloc.dart';
 
 import 'main_bloc/main_block.dart';
 import 'model/simple_social_media_repository.dart';
 import 'screen/screens.dart';
 
 void main() {
-  final UserRepository userRepository = new UserRepository();
-
   runApp(
     MultiBlocProvider(providers: [
       BlocProvider(
-        create: (context) => AuthenticationBloc(userRepository),
+        create: (context) => AuthenticationBloc(),
+      ),
+      BlocProvider(
+        create: (context) => AppLoaderBloc(),
       ),
       BlocProvider(
           create: (context) => LoginBloc(
-              userRepository: userRepository,
-              authenticationBloc:
-                  BlocProvider.of<AuthenticationBloc>(context))),
-      BlocProvider(
-          create: (context) =>
-              SocialMediaListBloc()),
-    ], child: App(userRepository: userRepository)),
+              authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
+              appLoaderBloc: BlocProvider.of<AppLoaderBloc>(context))),
+      BlocProvider(create: (context) => SocialMediaListBloc()),
+    ], child: App()),
   );
 }
 
 class App extends StatefulWidget {
-  final UserRepository userRepository;
-
-  App({Key? key, required this.userRepository}) : super(key: key);
+  App({Key? key}) : super(key: key);
 
   @override
   State<App> createState() => _AppState();
@@ -37,17 +34,16 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   late AuthenticationBloc authenticationBloc;
 
-  UserRepository get userRepository => widget.userRepository;
-
   @override
   void initState() {
-    authenticationBloc = AuthenticationBloc(userRepository);
+    authenticationBloc = AuthenticationBloc();
     authenticationBloc.add(AppStarted());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider<AuthenticationBloc>(
         create: (context) => authenticationBloc,
         child: MaterialApp(
@@ -55,6 +51,7 @@ class _AppState extends State<App> {
             home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
               bloc: authenticationBloc,
               builder: (BuildContext context, AuthenticationState state) {
+                print('BlocBuilder');
                 return Stack(
                   children: [
                     if (state is AuthenticationUninitialized)
@@ -64,6 +61,7 @@ class _AppState extends State<App> {
                     else if (state is AuthenticationUnauthenticated)
                       LoginScreen(
                         authenticationBloc: authenticationBloc,
+                        appLoaderBloc: BlocProvider.of<AppLoaderBloc>(context),
                       )
                   ],
                 );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_architecture/base/Loading.dart';
+import 'package:flutter_bloc_architecture/base/loading.dart';
+import 'package:flutter_bloc_architecture/base/children_holder.dart';
 import 'package:flutter_bloc_architecture/widget/progress_bar_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -28,14 +29,4 @@ abstract class BaseStatelessWidget extends StatelessWidget{
 
   Widget statelessWidgetBuilder(BuildContext context, Widget childrenHolder);
 
-}
-
-
-class ChildrenHolder extends Widget {
-  ChildrenHolder();
-
-  @override
-  Element createElement() {
-    return createElement();
-  }
 }
