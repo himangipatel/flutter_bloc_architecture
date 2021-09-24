@@ -10,14 +10,16 @@ import 'package:provider/provider.dart';
 
 abstract class BaseStateFullWidget<M extends BaseBloc, T extends StatefulWidget>
     extends State<T> {
+
+
   late M bloc;
   late SizeConfig sizeConfig;
 
   @override
   void initState() {
     super.initState();
-    bloc = initBloc();
     sizeConfig = new SizeConfig();
+    bloc = initBloc();
   }
 
   @override
@@ -48,4 +50,5 @@ abstract class BaseStateFullWidget<M extends BaseBloc, T extends StatefulWidget>
   M initBloc();
 
   Widget stateWidgetBuilder(BuildContext context, Widget childrenHolder);
+
 }

@@ -8,18 +8,26 @@ abstract class LoginState extends Equatable {
   List<Object> get props => [];
 }
 
+enum FormValidation { NotValid, Valid }
+
+class FormValid extends LoginState {
+  final FormValidation valid;
+
+  const FormValid({this.valid = FormValidation.NotValid});
+}
+
 class LoginInitial extends LoginState {}
 
-class LoginLoading extends LoginState {}
+class EmailError extends LoginState {
+  String error;
 
-class LoginFailure extends LoginState {
-  final String error;
-
-  const LoginFailure({required this.error});
-
-  @override
-  List<Object> get props => [error];
-
-  @override
-  String toString() => 'LoginFailure { error: $error }';
+  EmailError(this.error);
 }
+
+class PasswordError extends LoginState {
+  String error;
+
+  PasswordError(this.error);
+}
+
+class LoginSuccess extends LoginState {}

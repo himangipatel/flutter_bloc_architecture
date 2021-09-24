@@ -4,11 +4,15 @@ import 'package:flutter_bloc_architecture/main_bloc/app_loader_bloc.dart';
 
 import 'main_bloc/main_block.dart';
 import 'model/simple_social_media_repository.dart';
+import 'screen/github_search/search.dart';
 import 'screen/screens.dart';
 
 void main() {
   runApp(
     MultiBlocProvider(providers: [
+      BlocProvider(
+        create: (context) => GithubSearchBloc(),
+      ),
       BlocProvider(
         create: (context) => AuthenticationBloc(),
       ),

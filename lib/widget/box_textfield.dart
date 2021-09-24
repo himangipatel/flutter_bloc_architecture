@@ -126,36 +126,40 @@ class _BoxTextFieldState extends State<BoxTextField> {
                     color: Colors.grey[200],
                     //border:  Border.all(color: widget.focusBorderColor??Colors.grey.shade400, width: 1.0),
                     borderRadius: BorderRadius.circular(4.0)),
-                child: TextFormField(
-                  maxLength: widget.maxLength,
-                  keyboardType: widget.keyboardType,
-                  key: widget.key,
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 5),
+                    child: TextFormField(
+                      maxLength: widget.maxLength,
+                      keyboardType: widget.keyboardType,
+                      key: widget.key,
 //                  style: TextStyle(fontFamily: 'Exo2'),
-                  obscureText: widget.obscureText!,
-                  controller: widget.controller,
-                  onSaved: widget.onSaved,
-                  validator: widget.validator,
-                  onFieldSubmitted: widget.onFieldSubmitted,
-                  onChanged: widget.onChanged,
-                  decoration: InputDecoration(
-                    counter: Offstage(),
-                    border: InputBorder.none,
-                    contentPadding:
-                    const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
-                    suffixIcon: Icon(
-                      widget.icon,
-                      color: widget.iconColor,
-                      size: 22,
+                      obscureText: widget.obscureText!,
+                      controller: widget.controller,
+                      onSaved: widget.onSaved,
+                      validator: widget.validator,
+                      onFieldSubmitted: widget.onFieldSubmitted,
+                      onChanged: widget.onChanged,
+                      decoration: InputDecoration(
+                        counter: Offstage(),
+                        border: InputBorder.none,
+                        contentPadding:
+                        const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
+                        suffixIcon: Icon(
+                          widget.icon,
+                          color: widget.iconColor,
+                        ),
+                        hintText: widget.hintText,
+                        hintStyle: TextStyle(fontSize: 13.0),
+                        errorText: widget.errorText,
+                      ),
                     ),
-                    hintText: widget.hintText,
-                    hintStyle: TextStyle(fontSize: 13.0),
-                    errorText: widget.errorText,
                   ),
-                ),
+                )
               )),
         ],
       ),
-      padding: EdgeInsets.only(bottom: 2),
+
       margin: EdgeInsets.only(
         top: 8,
         right: 4,

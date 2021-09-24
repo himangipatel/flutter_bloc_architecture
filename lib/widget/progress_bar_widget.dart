@@ -22,8 +22,6 @@ class LoadingProgressWidget extends StatelessWidget {
     }
 
     return Stack(
-        overflow: Overflow.visible,
-        fit: StackFit.expand,
         alignment: Alignment.center,
         children: stackWidgets);
   }

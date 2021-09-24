@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
-abstract class LoginEvent extends Equatable {
+abstract class LoginEvent {
   const LoginEvent();
 }
 
@@ -13,8 +13,10 @@ class LoginButtonPressed extends LoginEvent {
     required this.username,
     required this.password,
   });
+}
 
-  @override
-  List<Object> get props => [username, password];
-
+class TextFieldChanged extends LoginEvent {
+  String email;
+  String password;
+  TextFieldChanged(this.email,this.password);
 }

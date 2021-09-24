@@ -5,6 +5,7 @@ class Strings {
   static const password = "Password";
 
   static const socialMediaListTitle = 'Social Media';
+  static const posts = 'Posts';
   static const favouritesSocialMediaTitle = 'Favourites';
   static const emptyList = 'List is empty';
 
